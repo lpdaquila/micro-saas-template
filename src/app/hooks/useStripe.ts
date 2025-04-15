@@ -26,7 +26,7 @@ async function createPaymentStripeCheckout(checkoutData: any) {
 
         const data = await response.json();
 
-        await stripe.redirectToCheckout({ sessionId: data.id });
+        await stripe.redirectToCheckout({ sessionId: data.sessionId });
 
         } catch (error) {
             console.error("Error creating checkout session:", error);
@@ -47,7 +47,7 @@ async function createSubscriptionScriptCheckout(checkoutData: any) {
 
         const data = await response.json();
 
-        await stripe.redirectToCheckout({ sessionId: data.id });
+        await stripe.redirectToCheckout({ sessionId: data.sessionId });
     } catch (error) {
         console.error("Error creating subscription checkout session:", error);
           }
