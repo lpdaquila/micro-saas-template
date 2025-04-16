@@ -20,8 +20,8 @@ export async function GET(req: NextRequest) {
     })
 
     if (paymentData.status === "approved" || paymentData.date_approved !== null) {
-        return NextResponse.redirect(new URL(`success`, req.url));
+        return NextResponse.redirect(new URL(`/success`, req.url));
     }
 
-    return NextResponse.redirect(new URL(`failure`, req.url));
+    return NextResponse.redirect(new URL(`/`, req.url));
 }

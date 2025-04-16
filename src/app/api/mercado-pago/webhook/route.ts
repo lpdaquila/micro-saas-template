@@ -1,5 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
-import crypto from "crypto";
+import { NextRequest } from "next/server";
 import mpClient, { validateMercadoPagoWebhook } from "@/app/lib/mercado-pago";
 import { Payment } from "mercadopago";
 import { handleMercadoPagoPayment } from "@/app/server/mercado-pago/handle-payment";

@@ -13,6 +13,7 @@ export async function POST(req: NextRequest) {
                 external_reference: testId, // User ID
                 metadata: {
                     testId, // var will be turned into a snake_case key in webhook -> test_id
+                    userEmail,
                 },
                 ...(userEmail && { payer: { email: userEmail } }),
                 items: [
@@ -43,9 +44,9 @@ export async function POST(req: NextRequest) {
                     ],
                 },
                back_urls: {
-                    success: `${process.env.NEXT_PUBLIC_BASE_URL}/api/mercado-pago/pending`,
-                    failure: `${process.env.NEXT_PUBLIC_BASE_URL}/api/mercado-pago/pending`,
-                    pending: `${process.env.NEXT_PUBLIC_BASE_URL}/api/mercado-pago/pending`,
+                    success: `${req.headers.get("origin")}/api/mercado-pago/pending`,
+                    failure: `${req.headers.get("origin")}/api/mercado-pago/pending`,
+                    pending: `${req.headers.get("origin")}/api/mercado-pago/pending`,
                } 
             }
         });
