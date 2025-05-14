@@ -1,45 +1,63 @@
-export function HowItWorksSection() {
-    return (
+import React, { JSX } from 'react';
+
+interface StepProps {
+  number: string;
+  title: string;
+  description: string;
+}
+
+function Step({ number, title, description }: StepProps): JSX.Element {
+  return (
+    <div className="p-6 text-center md:text-left">
+      <div className="flex justify-center md:justify-start items-center mb-4">
+        <div className="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold shadow-md">
+          {number}
+        </div>
+        <h3 className="text-xl font-semibold text-gray-700 ml-4">{title}</h3>
+      </div>
+      <p className="text-gray-600 leading-relaxed">
+        {description}
+      </p>
+    </div>
+  );
+}
+
+export function HowItWorksSection(): JSX.Element {
+  const steps: StepProps[] = [
+    {
+      number: "1",
+      title: "Faça Upload do PDF",
+      description: "Arraste e solte seu arquivo PDF na nossa plataforma ou selecione-o do seu dispositivo. É rápido e seguro.",
+    },
+    {
+      number: "2",
+      title: "Escolha a Extração",
+      description: "Selecione o que você deseja extrair: tabelas para Excel, todas as imagens ou o texto formatado para Word.",
+    },
+    {
+      number: "3",
+      title: "Baixe Seus Arquivos",
+      description: "Em instantes, seus dados estarão prontos. Faça o download dos arquivos convertidos no formato escolhido.",
+    },
+  ];
+
+  return (
     <section id="how-it-works" className="py-16 md:py-24">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
-          Como Funciona em 3 Passos Simples
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          {/* Passo 1 */}
-          <div className="p-6">
-             <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-               <span className="text-2xl font-bold text-blue-600">1</span>
-             </div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">Faça Upload</h3>
-            <p className="text-gray-600">
-              Arraste e solte ou selecione o arquivo PDF que deseja processar.
-            </p>
-          </div>
-          {/* Passo 2 */}
-          <div className="p-6">
-            <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-               <span className="text-2xl font-bold text-blue-600">2</span>
-             </div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">Escolha a Extração</h3>
-            <p className="text-gray-600">
-              Selecione o que você precisa: tabelas para Excel, imagens ou texto para Word.
-            </p>
-          </div>
-          {/* Passo 3 */}
-          <div className="p-6">
-            <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-               <span className="text-2xl font-bold text-blue-600">3</span>
-             </div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">Baixe o Resultado</h3>
-            <p className="text-gray-600">
-              Faça o download dos seus dados extraídos no formato desejado. Rápido e fácil!
-            </p>
-          </div>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            Como Funciona? Simples Assim!
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Extrair dados de PDFs nunca foi tão fácil. Siga estes três passos:
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {steps.map((step) => (
+            <Step key={step.number} {...step} />
+          ))}
         </div>
       </div>
     </section>
-)
-};
-
-export default HowItWorksSection;
+  );
+}

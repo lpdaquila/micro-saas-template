@@ -1,38 +1,24 @@
-import Head from "next/head";
-import HeroSection from "./HeroSection";
-import FeaturesSection from "./FeaturesSection";
-import HowItWorksSection from "./HowItWorks";
-import Footer from "./Footer";
-import PricingTeaserSection from "./PriceTeaserSection";
+// app/components/landing/LandingPage.tsx
+import React, { JSX } from 'react';
+import { HeroSection } from './HeroSection';
+import { FeaturesSection } from './FeaturesSection';
+import { Footer } from './Footer';
+import { HowItWorksSection } from './HowItWorks';
+import { PricingTeaserSection } from './PriceTeaserSection';
+// Importe um Navbar se tiver um: import { Navbar } from '../common/Navbar';
 
-export function LandingPage(){
+export function LandingPage(): JSX.Element {
   return (
-    <div>
-      <Head>
-        {/* SEO Otimization */}
-        <title>Extrator de PDF para Excel, Imagens e Word | Seu Micro SaaS</title>
-        <meta
-          name="description"
-          content="Extraia facilmente tabelas, imagens e textos de arquivos PDF. Converta PDF para Excel, JPG/PNG e DOCX online. Experimente gratuitamente!"
-        />
-        {/* Add more meta tags as needed: keywords, Open Graph, etc. */}
-        <link rel="icon" href="/favicon.ico" /> {/* Certifique-se que o favicon existe */}
-      </Head>
-
-      {/* Inclua um Header/Navbar aqui se você tiver um componente separado */}
-      {/* <Navbar /> */}
-
+    <>
+      {/* <Navbar /> */} {/* Descomente se tiver um Navbar */}
       <main>
         <HeroSection />
         <FeaturesSection />
         <HowItWorksSection />
         <PricingTeaserSection />
-        {/* Você pode adicionar mais seções aqui, como Testemunhos, FAQs, etc. */}
+        {/* Você pode adicionar mais seções aqui (ex: Testimonials, FAQ) */}
       </main>
-
       <Footer />
-    </div>
+    </>
   );
-};
-
-export default LandingPage;
+}
